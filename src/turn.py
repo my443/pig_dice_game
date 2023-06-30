@@ -5,7 +5,7 @@ class Turn():
     score_values = []
     TurnStatus = Enum('TurnStatus', ['Active', 'Ended'])
     curren_status = TurnStatus.Active
-    chose_to_end_turn = 0
+    chose_to_end_turn = False
 
     def add_roll(self, roll):
         if self.get_turn_status() == self.TurnStatus.Active:
@@ -18,7 +18,7 @@ class Turn():
             return 0
 
     def set_turn_status(self):
-        if len(self.score_values) > 0 and self.score_values[-1] == 0 or self.chose_to_end_turn == 1:
+        if len(self.score_values) > 0 and self.score_values[-1] == 0 or self.chose_to_end_turn == True:
             self.curren_status = self.TurnStatus.Ended
         else:
             self.curren_status = self.TurnStatus.Active
@@ -28,7 +28,7 @@ class Turn():
         return self.curren_status
 
     def end_turn(self):
-        self.chose_to_end_turn = 1
+        self.chose_to_end_turn = True
 
     def __init__(self):
         self.current_status = self.TurnStatus.Active
@@ -36,11 +36,4 @@ class Turn():
         pass
 
 if __name__ == '__main__':
-    new_turn = Turn()
-
-    new_turn.add_roll(5)
-    new_turn.add_roll(6)
-    new_turn.add_roll(0)
-    print (new_turn.score_values)
-    print (new_turn.score_values[-1])
-    print(new_turn.get_turn_status())
+    pass
