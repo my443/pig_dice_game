@@ -17,11 +17,15 @@ class Turn():
         else:
             return 0
 
-    def get_turn_status(self):
+    def set_turn_status(self):
         if len(self.score_values) > 0 and self.score_values[-1] == 0 or self.chose_to_end_turn == 1:
-            return self.TurnStatus.Ended
+            self.curren_status = self.TurnStatus.Ended
         else:
-            return self.TurnStatus.Active
+            self.curren_status = self.TurnStatus.Active
+
+    def get_turn_status(self):
+        self.set_turn_status()
+        return self.curren_status
 
     def end_turn(self):
         self.chose_to_end_turn = 1
