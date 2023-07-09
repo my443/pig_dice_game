@@ -20,4 +20,4 @@ def test_add_players():
     new_game.add_player('Amy')
     player_list = [str(x) for x in new_game.get_players()]
 
-    assert player_list == ['John', 'Amy']
+    assert player_list == ['John      ', 'Amy       ']
