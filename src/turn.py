@@ -8,7 +8,7 @@ class Turn():
     curren_status = TurnStatus.Active
 
     def add_roll(self):
-        roll = random.randint(1, 2)
+        roll = random.randint(1, 6)
 
         if roll == 1:
             self.end_turn('rolled a 1')
@@ -38,6 +38,8 @@ class Turn():
             self.score_values = []
 
         self.curren_status = self.TurnStatus.Ended
+
+        return  self.TurnStatus
 
     def __init__(self):
         self.current_status = self.TurnStatus.Active

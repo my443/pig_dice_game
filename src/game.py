@@ -37,21 +37,24 @@ class Game():
 
     def get_turn(self):
         turn = self.current_turn_details
+
         if len(self.players) > 0:
             print(f'Current Player: {self.players[self.current_turn_player].name}\n')
-        print (turn)
 
         return turn
 
     def new_turn(self):
+        print(self.current_turn_player, self.current_turn_details)
         new_turn = Turn()
 
-        if self.current_turn_player + 1 > len(self.players):
+        if self.current_turn_player + 1 == len(self.players):
             self.current_turn_player = 0
         else:
-            self.current_turn_player + 1
+            self.current_turn_player = self.current_turn_player + 1
 
         self.current_turn_details = new_turn
+        print(self.current_turn_player, self.current_turn_details)
+
 
     def roll_dice(self):
         myturn = self.current_turn_details
@@ -70,6 +73,7 @@ class Game():
         self.get_players()
         this_turn = self.get_turn()
         print (this_turn)
+
         # if len(self.players) > 1:
         #     if this_turn.turn_is_active() == False:
         #         self.new_turn()
@@ -87,7 +91,8 @@ class Game():
             input('')
         elif selection == 'b':
             for i in range(10): print('ending turn now')
-            pass
+            self.players[self.current_turn_player].add_score(self.current_turn_details.get_score())
+            self.current_turn_details.end_turn('player')
         elif selection == 'c':
            new_player_name = input("Enter New Player's name: ")
            self.add_player(new_player_name)
@@ -97,8 +102,12 @@ class Game():
         elif selection == 'e':
             self.endgame = True
 
+        if self.current_turn_details.get_turn_status() == self.current_turn_details.TurnStatus.Ended:
+            self.new_turn()
+
         if self.endgame != True:
             self.get_action()
+
 
     def __init__(self):
         pass
