@@ -17,4 +17,4 @@ class Player():
         self.score = 0
 
     def __str__(self):
-        return  f"{self.name.ljust(10, ' ')}"
+        return  f"{self.name.ljust(10, ' ')}      {self.score}"
