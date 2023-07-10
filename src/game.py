@@ -3,6 +3,7 @@ from player import *
 class Game():
     players = []
     endgame = False
+    current_turn = {}
 
     def add_player(self, name):
         new_player = Player(name)
@@ -10,6 +11,7 @@ class Game():
 
     def remove_player(self, player_to_remove_index):
         del self.players[int(player_to_remove_index)-1]
+        ## TODO - when you remove a player, the current turn might need to be changed.
 
     def get_players(self):
         print ('\n************************')
@@ -20,6 +22,11 @@ class Game():
 
         print()
         return self.players
+
+    def assign_current_turn(self):
+        player = 0
+
+        pass
 
     def get_action(self):
         options = { 'player_roll_dice': 'a) Current player rolls di',
