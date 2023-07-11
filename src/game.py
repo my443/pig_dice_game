@@ -86,8 +86,8 @@ class Game():
 
         if selection == 'a':
             roll = self.roll_dice()
-            print('roll: ', roll)
-            print (self.current_turn_details.get_score())
+            print('\n Currernt roll: ', roll)
+            ##print (self.current_turn_details.get_score())
             input('')
         elif selection == 'b':
             for i in range(10): print('ending turn now')
